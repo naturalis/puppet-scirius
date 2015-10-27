@@ -1,0 +1,24 @@
+{
+  "name": "naturalis-scirius",
+  "version": "0.1.0",
+  "author": "P. Gomersbach",
+  "summary": "Puppet module to install and configure scirius",
+  "license": "Apache 2.0",
+  "source": "https://github.com/naturalis/scirius.git",
+  "project_page": "https://github.com/naturalis/scirius",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 1.0.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "12.04",
+        "14.04"
+      ]
+    }
+  ]
+}

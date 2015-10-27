@@ -1,0 +1,41 @@
+# Elastic search
+<% if @scirius_es_address %>
+USE_ELASTICSEARCH = True
+ELASTICSEARCH_ADDRESS = "<%= @scirius_es_address %>"
+ELASTICSEARCH_LOGSTASH_INDEX = "<%= @scirius_es_index %>"
+<% else %> 
+USE_ELASTICSEARCH = False
+ELASTICSEARCH_ADDRESS = "127.0.0.1:9200"
+ELASTICSEARCH_LOGSTASH_INDEX = "logstash-"
+<% end %>
+# use hourly, daily to indicate the logstash index building recurrence
+ELASTICSEARCH_LOGSTASH_TIMESTAMPING = "daily"
+
+# Kibana
+<% if @scirius_kibana_url %>
+USE_KIBANA = True
+KIBANA_URL = "<%= @scirius_kibana_url %>"
+<% else %>
+USE_KIBANA = False
+KIBANA_URL = "http://localhost:5601"
+KIBANA_VERSION=4
+<% end %>
+KIBANA_INDEX = "<%= @scirius_kibana_index %>"
+KIBANA_VERSION=<%= @scirius_kibana_version %>
+
+KIBANA_PROXY = False
+# Number of dashboards to display
+KIBANA_DASHBOARDS_COUNT = 20
+
+# Suricata is configured to write stats to EVE
+USE_SURICATA_STATS = True
+# Logstash is generating metrics on eve events
+USE_LOGSTASH_STATS = False
+
+# Influxdb
+USE_INFLUXDB = False
+INFLUXDB_HOST = "localhost"
+INFLUXDB_PORT = 8086
+INFLUXDB_USER = "grafana"
+INFLUXDB_PASSWORD = "grafana"
+INFLUXDB_DATABASE = "scirius"

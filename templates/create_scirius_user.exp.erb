@@ -1,0 +1,16 @@
+#!/usr/bin/expect -f
+set timeout 3
+spawn python manage.py createsuperuser
+match_max 100000
+expect -exact "Username (leave blank to use 'root'): "
+send -- "<%= @scirius_admin %>\r"
+expect -exact "admin\r
+Email address: "
+send -- "<%= @scirius_admin_mail %>\r"
+expect -exact "admin@bla.com\r
+Password: "
+send -- "<%= @scirius_admin_pass %>\r"
+expect -exact "\r
+Password (again): "
+send -- "<%= @scirius_admin_pass %>\r"
+expect eof
