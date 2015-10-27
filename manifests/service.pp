@@ -2,7 +2,9 @@
 #
 class scirius::service {
   service { 'scirius':
-    ensure => running,
+    ensure    => running,
+    hasstatus => false,
+    pattern   => '/usr/bin/python /opt/scirius/manage.py',
   }
 }
 

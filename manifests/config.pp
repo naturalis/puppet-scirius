@@ -7,6 +7,22 @@ class scirius::config {
   ]
   ensure_packages($packages)
 
+  # prepare start scripts
+  file { 'scirius init':
+    path    => '/etc/init.d/scirius',
+    content => template('scirius/scirius.init.erb'),
+    mode    => '0755',
+  }
+  file { 'scirius default':
+    path   => '/etc/default/scirius',
+    source => 'puppet:///modules/scirius/scirius.default',
+  }
+  file { 'scirius manage':
+    path    => '/opt/scirius/manage.py',
+    mode    => '0755',
+    require => Vcsrepo['/opt/scirius'],
+  }
+
   # only trigger creation of users, sources, rulesets if new db is created
   exec { 'scirius_admin_user':
     command     => '/usr/bin/expect create_scirius_user.exp',

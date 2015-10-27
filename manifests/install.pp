@@ -32,21 +32,6 @@ class scirius::install {
     command     => '/usr/bin/pip install -r /opt/scirius/requirements.txt',
     refreshonly => true,
   }
-  # prepare start scripts
-  file { 'scirius init':
-    path    => '/etc/init.d/scirius',
-    content => template('scirius/scirius.init.erb'),
-    mode    => '1544',
-  }
-  file { 'scirius default':
-    path   => '/etc/default/scirius',
-    source => 'puppet:///modules/scirius/scirius.default',
-  }
-  file { 'scirius manage':
-    path    => '/opt/scirius/manage.py',
-    mode    => '0755',
-    require => Vcsrepo['/opt/scirius'],
-  }
   file { 'create scirius expect':
     path    => '/opt/scirius/create_scirius_user.exp',
     content => template('scirius/create_scirius_user.exp.erb'),
