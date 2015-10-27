@@ -22,8 +22,7 @@ describe 'scirius' do
           it { is_expected.to contain_class('scirius::service').that_subscribes_to('scirius::config') }
 
           it { is_expected.to contain_service('scirius') }
-          it { is_expected.to contain_package('scirius').with_ensure('present') }
-
+          it { is_expected.to contain_vcsrepo('/opt/scirius') }
         end
       end
     end

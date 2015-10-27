@@ -1,9 +1,9 @@
-# == Class scurius::params
+# == Class scirius::params
 #
-# This class is meant to be called from scurius
+# This class is meant to be called from scirius
 # It sets variables according to platform
 #
-class scurius::params {
+class scirius::params {
   $ruleset = 'emerging'
   $scirius_port = '8888'
   $scirius_admin = 'admin'
@@ -17,5 +17,4 @@ class scurius::params {
   $scirius_kibana_url = "http://${::ipaddress}:5601"
   $scirius_kibana_index = '.kibana'
   $scirius_kibana_version = 4
-  }
 }

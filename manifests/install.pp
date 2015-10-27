@@ -34,9 +34,9 @@ class scirius::install {
   }
   # prepare start scripts
   file { 'scirius init':
-    path   => '/etc/init.d/scirius',
+    path    => '/etc/init.d/scirius',
     content => template('scirius/scirius.init.erb'),
-    mode   => '1544',
+    mode    => '1544',
   }
   file { 'scirius default':
     path   => '/etc/default/scirius',
@@ -60,7 +60,7 @@ class scirius::install {
   }
   file { 'create_scirues_rulesdir':
     ensure  => directory,
-    path    => "/etc/suricata/rules/${suricata::params::scirius_ruleset_name}",
+    path    => "/etc/suricata/rules/${scirius::params::scirius_ruleset_name}",
     require => [ File['rulesdir'], Vcsrepo['/opt/scirius'] ],
   }
   # install new db if not exist
