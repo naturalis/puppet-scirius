@@ -39,9 +39,14 @@ class scirius::install {
     require => Vcsrepo['/opt/scirius'],
   }
   # create rules dir
-  file{ 'rulesdir':
+  file{ 'suricatadirdir':
     ensure => directory,
-    path   => ['/etc/suricata, /etc/suricata/rules'],
+    path   => '/etc/suricata',
+  }
+  file{ 'rulesdir':
+    ensure  => directory,
+    path    => '/etc/suricata/rules',
+    require => File['suricatadirdir'],
   }
   file { 'create_scirues_rulesdir':
     ensure  => directory,
