@@ -41,7 +41,7 @@ class scirius::install {
   # create rules dir
   file{ 'rulesdir':
     ensure => directory,
-    path   => '/etc/suricata/rules',
+    path   => ['/etc/suricata, /etc/suricata/rules'],
   }
   file { 'create_scirues_rulesdir':
     ensure  => directory,
