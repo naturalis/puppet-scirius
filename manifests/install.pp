@@ -1,7 +1,7 @@
 # == Class scirius::install
 #
 class scirius::install {
-  # install django
+  # install packages
   $packages = [
     'git',
     'expect',
