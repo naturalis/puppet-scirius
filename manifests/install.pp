@@ -13,7 +13,7 @@ class scirius::install {
     'python-docutils',
     'python-pip',
     'python-dev',
-    'python-pyinotify'
+    'python-pyinotify',
   ]
   ensure_packages($packages)
   # create /opt
