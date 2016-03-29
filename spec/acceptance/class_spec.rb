@@ -12,21 +12,13 @@ describe 'scirius class' do
   context 'default parameters' do
     if ENV['BEAKER'] == 'true'
       # Using puppet_apply as a helper
-      it 'should work idempotently with no errors' do
+      it 'should work with no errors' do
         pp = <<-EOS
         class { 'scirius': }
         EOS
 
-        # Run it twice and test for idempotency
         apply_manifest(pp, :catch_failures => true, :future_parser => true)
-        apply_manifest(pp, :catch_changes  => true, :future_parser => true)
       end
-    end
-
-
-    # default module tests
-    describe package('scirius') do
-      it { is_expected.to be_installed }
     end
 
     describe service('scirius') do
