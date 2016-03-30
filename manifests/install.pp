@@ -35,11 +35,12 @@ class scirius::install {
   exec { 'install requirements':
     command     => '/usr/bin/pip install -r /opt/scirius/requirements.txt',
     refreshonly => true,
-  }
+  } ~>
 
   exec { 'update requierements':
     command => '/usr/bin/pip install -U -r /opt/scirius/requirements.txt',
     require => Exec['install requirements'],
+    refreshonly => true,
   }
 
   package { 'south':
