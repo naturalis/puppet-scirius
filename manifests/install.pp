@@ -14,6 +14,7 @@ class scirius::install {
     'python-pip',
     'python-dev',
     'python-pyinotify',
+    'expect',
   ]
   ensure_packages($packages)
 

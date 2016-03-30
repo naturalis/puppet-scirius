@@ -1,11 +1,6 @@
 # == Class scirius::config
 #
 class scirius::config {
-  # install packages
-  $packages = [
-    'expect',
-  ]
-  ensure_packages($packages)
 
   # prepare start scripts
   file { 'scirius init':
@@ -54,6 +49,7 @@ class scirius::config {
     cwd         => '/opt/scirius',
     subscribe   => Exec['scirius_addsuricata'],
   }
+
   # auto update ruleset daily
   if $scirius::params::scirius_ruleset_update == true {
     cron { 'update rules':
@@ -62,6 +58,8 @@ class scirius::config {
       special => daily,
     }
   }
+
+  # reload suricata on new ruleset
   cron { 'auto reload suricata':
     command => "[ -f /etc/suricata/rules/${scirius::params::scirius_ruleset_name}/scirius.reload ] && service suricata restart;rm /etc/suricata/rules/${scirius::params::scirius_ruleset_name}/scirius.reload",
     user    => root,
