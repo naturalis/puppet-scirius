@@ -35,10 +35,12 @@ class scirius::install {
     command     => '/usr/bin/pip install -r /opt/scirius/requirements.txt',
     refreshonly => true,
   }
-  exec { 'update six':
+
+  exec { 'update requierements':
     command => '/usr/bin/pip install -U -r /opt/scirius/requirements.txt',
     require => Exec['install requirements'],
   }
+
   package { 'south':
     ensure   => installed,
     provider => 'pip',
@@ -52,12 +54,13 @@ class scirius::install {
     require => Vcsrepo['/opt/scirius'],
   }
 
-  # create rules dir
+  # create suricata dir
   file{ 'suricatadirdir':
     ensure => directory,
     path   => '/etc/suricata',
   }
 
+  # create rules dir
   file{ 'rulesdir':
     ensure  => directory,
     path    => '/etc/suricata/rules',
@@ -75,7 +78,7 @@ class scirius::install {
     command => '/usr/bin/python manage.py syncdb --no-initial-data --noinput',
     creates => '/opt/scirius/db.sqlite3',
     cwd     => '/opt/scirius',
-    require => [ Vcsrepo['/opt/scirius'], Package['south'], Exec['update six'] ],
+    require => [ Vcsrepo['/opt/scirius'], Package['south'], Exec['update requierements'] ],
   }
 
   # install scirius local settings
