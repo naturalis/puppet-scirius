@@ -35,6 +35,7 @@ describe 'scirius' do
           it { is_expected.to contain_package('python-pyinotify') }
           it { is_expected.to contain_package('python-pythonmagick') }
           it { is_expected.to contain_package('python-textile') }
+          it { is_expected.to contain_package('south') }
 
           # contain files
           it { is_expected.to contain_file('/opt') }
@@ -55,6 +56,7 @@ describe 'scirius' do
           it { is_expected.to contain_exec('scirius_defaultruleset') }
           it { is_expected.to contain_exec('scirius_ruleset') }
           it { is_expected.to contain_exec('scirius_updatesuricata') }
+          it { is_expected.to contain_exec('update requierements') }
 
           # contain cron jobs
           it { is_expected.to contain_cron('auto reload suricata') }
