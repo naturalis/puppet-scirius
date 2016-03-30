@@ -38,8 +38,8 @@ class scirius::install {
   } ~>
 
   exec { 'update requierements':
-    command => '/usr/bin/pip install -U -r /opt/scirius/requirements.txt',
-    require => Exec['install requirements'],
+    command     => '/usr/bin/pip install -U -r /opt/scirius/requirements.txt',
+    require     => Exec['install requirements'],
     refreshonly => true,
   }
 
