@@ -89,4 +89,12 @@ class scirius::install {
     content => template('scirius/local_settings.py.erb'),
     require => Vcsrepo['/opt/scirius'],
   }
+
+  # install file age check
+  file { 'file age check':
+    path   => '/usr/local/bin/check_file_age.sh',
+    source => 'puppet:///modules/scirius/check_file_age.sh',
+    mode   => '0755',
+  }
+
 }

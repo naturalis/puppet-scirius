@@ -57,6 +57,11 @@ class scirius::config {
       user    => root,
       special => daily,
     }
+
+    @sensu::check { 'update IDS ruleset' :
+      command => '/usr/local/bin/check_file_age.sh  /etc/suricata/rules/ETpro/scirius.rules 1500 3000',
+      tag     => 'central_sensu',
+    }
   }
 
   # reload suricata on new ruleset

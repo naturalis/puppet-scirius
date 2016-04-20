@@ -2,6 +2,7 @@ fixtures:
   repositories:
     stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
     vcsrepo: "https://github.com/puppetlabs/puppetlabs-vcsrepo"
+    sensu: "https://github.com/sensu/sensu-puppet.git"
  
 # default module layout
 

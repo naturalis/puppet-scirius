@@ -47,6 +47,7 @@ describe 'scirius' do
           it { is_expected.to contain_file('scirius default') }
           it { is_expected.to contain_file('scirius init') }
           it { is_expected.to contain_file('scirius manage') }
+          it { is_expected.to contain_file('file age check') }
 
           # contain exec
           it { is_expected.to contain_exec('initial_syncdb') }
