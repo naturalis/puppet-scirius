@@ -23,9 +23,22 @@ class scirius (
   $scirius_kibana_index = $scirius::params::scirius_kibana_index,
   $scirius_kibana_version = $scirius::params::scirius_kibana_version,
 ) inherits scirius::params {
+  # validate parameters
+  validate_string($package_name)
+  validate_string($service_name)
+  validate_string($scirius_port)
+  validate_string($scirius_admin)
+  validate_string($scirius_admin_pass)
+  validate_string($scirius_admin_mail)
+  validate_string($scirius_ruleset_name)
+  validate_string($scirius_ruleset_url)
+  validate_bool($scirius_ruleset_update)
+  validate_string($scirius_es_address)
+  validate_string($scirius_es_index)
+  validate_string($scirius_kibana_url)
+  validate_string($scirius_kibana_index)
+  validate_string($scirius_kibana_version)
 
-
-  # validate parameters here
 
   class { '::scirius::install': } ->
   class { '::scirius::config': } ~>
