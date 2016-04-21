@@ -21,10 +21,5 @@ describe 'scirius class' do
       end
     end
 
-    describe service('scirius') do
-      it { is_expected.to be_enabled }
-      it { is_expected.to be_running }
-    end
-
   end
 end

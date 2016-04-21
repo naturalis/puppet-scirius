@@ -37,7 +37,7 @@ class scirius (
   validate_string($scirius_es_index)
   validate_string($scirius_kibana_url)
   validate_string($scirius_kibana_index)
-  validate_string($scirius_kibana_version)
+  validate_integer($scirius_kibana_version)
 
 
   class { '::scirius::install': } ->
